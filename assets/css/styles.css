@@ -1,0 +1,418 @@
+/* CSS Reset */
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+  
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    }
+  
+ol, ul {
+    list-style: none;   
+}
+  
+img {
+    max-width: 100%;
+    height: auto;
+}
+  
+/* General Layout Styles */
+:root{
+    --font-size: 18px;
+    --font-size-small: 16px;
+    --unit: calc(var(--font-size)*0.5);
+    --body-padding-x: calc(var(--unit)*8);
+    --body-padding-y: calc(var(--unit)*8);
+    --row-gap: calc(var(--unit)*4);
+    --col-gap: calc(var(--unit)*6);
+
+    --main-accent: #4154E8;
+    --highlight: #FFF399;
+    --main-content: #383943;
+    --minor-content: #96979C;
+}
+
+
+body > div{
+    min-height: calc(100vh - 36px);
+    margin: 0 auto;
+    padding: var(--body-padding-y) var(--body-padding-x);
+    font-size: var(--font-size);
+    
+    font-family: 'IBM Plex Serif', serif;
+    color: var(--main-content);
+}
+
+h1{
+    font-size: 2em;
+    font-family: "DM Sans";
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2{
+    font-size: 1.33em;
+    font-family: "DM Sans";
+    font-style: italic;
+}
+
+h3{
+    font-size: 1.333em;
+    font-family: "DM Sans";
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+h4{
+    font-size: 1em;
+    font-family: "DM Sans";
+    font-weight: 500;
+}
+mark{
+    background: var(--highlight);
+}
+
+.squiggle{
+    text-align: center;
+}
+
+.squiggle:after{
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--main-color);
+    word-spacing: 100px;
+    line-height: 0;
+    display: block;
+    font-size: 32px;
+    padding-bottom: 32px;
+    margin: 1.25em 0;
+    content: '\00a0';
+}
+
+/* Nav */
+
+.nav{
+    /* background: #F1F1F1; */
+    height: 36px;
+    display:flex;
+    align-items: center;
+    font-family: "DM Sans";
+    font-size: 12px;
+    padding: 0 16px;
+    font-weight: normal;
+    color: var(--main-content);
+}
+
+.nav > li{
+    margin-right: 16px;
+}
+
+.nav a{
+    text-decoration: none;
+    color: var(--main-content);
+    opacity: 0.5;
+    transition: opacity 150ms ease;
+}
+
+.nav a:hover{
+    opacity: 1;
+}
+
+.nav > li.active > a{
+    border-bottom: 2px solid var(--main-content);
+    opacity: 1;
+}
+
+.nav > li#logo{
+    background: var(--main-accent);
+    padding: 2px 4px;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    font-size: 11px;
+    transition: transform 150ms ease;
+}
+
+.nav > li#logo > a{
+    opacity: 1;
+    color: white;
+    display:block;
+    
+}
+
+.nav > li#logo:hover{
+    transform: scale(1.1);
+}
+
+
+/* List Page */
+
+.content > h1{
+    text-align: center;
+    margin-bottom: 0.25em;
+}
+
+.content > h4{
+    text-align: center;
+    margin-bottom: 0.25em;
+}
+
+main > ul {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+    column-gap: var(--col-gap);
+    row-gap: var(--row-gap);
+    max-width: calc(var(--unit)*154);
+}
+
+main li{
+    padding: 10px;
+}
+
+main li > h4{
+    margin-bottom: 0.5em;
+    line-height: 1.4;
+}
+
+main li > h4 > a{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--main-content);
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 100ms ease;
+}
+
+main li > h4 > a:hover{
+    background: var(--highlight);
+}
+
+main li > p {
+    font-size: var(--font-size-small);
+    padding-left: 4px;
+    color: var(--minor-content);
+}
+
+
+/* Essay Layout */
+
+article{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 175px;
+    column-gap: var(--col-gap);
+    max-width: calc(var(--unit)*136);
+    margin: 0 auto;
+    color: var(--body-content);
+    counter-reset: figures;
+}
+
+article > *{
+    grid-column: 2 / 5;
+    margin-bottom: 1em;
+}
+
+article > aside{
+    grid-column: 5;
+}
+
+article > figure.wide{
+    grid-column: 1 / -1;
+}
+
+article > figure{
+    counter-increment: figures;
+}
+
+article .signature{
+    margin-top: 2em;
+    color: var(--main-accent);
+}
+
+article .squiggle:after{
+    margin-top: 0;
+}
+
+
+
+/* Essay Styles */
+
+article p{
+    line-height: 1.65;
+}
+
+article > aside{
+    font-size: 14px;
+    color: var(--minor-content);
+    line-height: 1.5;
+}
+
+article figcaption{
+    font-size: var(--font-size-small);
+    color: var(--minor-content);
+    margin-top: 0.2em;
+}
+
+article figcaption::before{
+    content: "Fig." counter(figures);
+    margin-right: 10px;
+    font-size: 0.9em;
+    font-weight:bold;
+}
+
+article > blockquote{
+    font-size: var(--font-size-small);
+    line-height: 1.65;
+    margin-left: 2em;
+    padding-left: 0.75em;
+    border-left: 2px solid #DFDFE2;
+    color: var(--minor-content);
+}
+
+article ol{
+    display: block;
+    padding-left: 1.5em;
+    list-style: decimal;
+}
+
+article ul{
+    display: block;
+    padding-left: 1.5em;
+    list-style: disc;
+}
+
+article li{
+    margin-top: 0.875em;
+    line-height: 1.625;
+}
+
+article > ul > li:first-child,
+article > ol > li:first-child{
+    margin-top:0;
+}
+
+article a {
+    color: var(--main-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+article a:hover{
+    text-decoration:underline;
+}
+
+article .footnotes{
+    font-size: 0.875em;
+}
+
+article .footnote{
+    padding-left: 4px;
+    padding-right: 3px;
+    border-radius: 2px;
+    background: #D9DDFC;
+    color: var(--main-accent);
+    font-size: 0.8em;
+    font-weight: bold;
+    font-family: "DM Sans";
+    display: inline-block;
+    transition: transform 150ms ease;
+}
+
+article .footnote:hover{
+    transform: scale(1.5);
+    text-decoration: none;
+}
+
+article .footnotes:before{
+    content: "NOTES";
+    font-family: "DM Sans";
+    letter-spacing: 0.4px;
+    font-weight:bold;
+    margin-bottom: 1em;
+    display:block;
+}
+
+.quote{
+    color: var(--minor-content);
+}
+
+.quote p{
+    font-size: var(--font-size-small);
+    margin-top: 5px;
+}
+.quote p:before{
+    content: "- ";
+}
+
+/* Essay Spacing */
+article h1{
+    margin-bottom: 1.5em;
+}
+
+article h1+h2{
+    margin-top: -2.25em;
+    margin-bottom: 1.5em;
+}
+
+article figure{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+article h3{
+    margin-top: 0.75em;
+}
+
+article blockquote{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+article .quote{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+article .signature{
+    margin-bottom: 0;
+}
+
+
+
+@media (max-width: 1024px){
+    :root{
+        /* -body-padding-y: calc(var(--unit)*4); */
+    }
+    article > *{
+        grid-column: 1 / 5;
+    }
+
+}
+
+@media (max-width: 800px){
+    :root{
+        --body-padding-x: calc(var(--unit)*3);
+        --body-padding-y: calc(var(--unit)*4);
+    }
+    main{
+        padding: 0 calc(var(--unit)*3);
+    }
+    article > *{
+        grid-column: 1 / -1;
+    }
+    article > aside{
+        grid-column: 1 / -1;
+        background: #f2f2f2;
+        color:gray;
+        margin-bottom: 1.5em;
+        padding: 0.5em;
+        border-radius: 3px;
+    }
+}
+
+
